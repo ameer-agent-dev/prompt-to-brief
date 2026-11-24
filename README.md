@@ -1,5 +1,7 @@
 # prompt-to-brief
 
+[![skills.sh](https://skills.sh/b/ameer-agent-dev/prompt-to-brief)](https://skills.sh/ameer-agent-dev/prompt-to-brief)
+
 Turn any rough prompt, messy idea, or vague request to an AI into a clear Four-Part Brief (Outcome, Context, Format, Constraints).
 Works as an open Agent Skill in coding agents, as an uploaded skill in Claude.ai and ChatGPT, or by copy-pasting into any AI chat.
 
@@ -22,15 +24,15 @@ Download the ready-to-upload skill archive from the `v1.0.0` release:
 ### Upload to Claude.ai
 
 1. Download `prompt-to-brief.zip` from the link above.
-2. Open Claude.ai and go to **Settings > Capabilities > Skills**.
-3. Click **Upload skill** and select `prompt-to-brief.zip`.
+2. Open **Customize > Skills**, click **+ > Create skill > Upload a skill**, and select `prompt-to-brief.zip`.
+3. Make sure **Code execution** is enabled under **Settings > Capabilities**.
 4. Turn the skill on, then paste any rough prompt and ask Claude to turn it into a brief.
 
 ### Upload to ChatGPT
 
 1. Download `prompt-to-brief.zip` from the link above.
-2. Open ChatGPT and go to **Settings > Skills** (or your workspace Skills page).
-3. Click **Upload skill** (or **Add skill**) and select `prompt-to-brief.zip`.
+2. Open **Plugins** in the sidebar and go to the **Skills** tab.
+3. Click **Create > Upload from your computer** and select `prompt-to-brief.zip`.
 4. Enable the skill and ask ChatGPT to rewrite or structure your prompt.
 
 *Note: If your plan does not include skill uploads, use the copy-paste setup below.*
@@ -41,12 +43,10 @@ You can use `prompt-to-brief` in Gemini, Claude.ai, ChatGPT, or any other free A
 
 1. Open [skills/prompt-to-brief/SKILL.md](skills/prompt-to-brief/SKILL.md) (or view the [raw file](https://raw.githubusercontent.com/ameer-agent-dev/prompt-to-brief/main/skills/prompt-to-brief/SKILL.md)) and copy everything below the top `---` header block.
 2. Choose where to put it:
-   - **Project Instructions or Custom Instructions:** Paste it once so the chat automatically rewrites prompts whenever you ask for prompt help, while answering normal questions as usual. (If your tool has a shorter character limit, use the chat-start option below.)
-   - **Start of a chat:** Paste the instructions as your first message, followed by your rough prompt.
+    - **Project Instructions or Custom Instructions:** Paste it once so the chat automatically rewrites prompts whenever you ask for prompt help, while answering normal questions as usual. (If your tool has a shorter character limit, use the chat-start option below.)
+    - **Start of a chat:** Paste the instructions as your first message, followed by your rough prompt.
 
 ## 4. Before and After Example
-
-*Illustrative sample (you can replace or expand this section with your own examples later).*
 
 ### Before (rough prompt)
 
@@ -72,17 +72,22 @@ Inline chat text: one subject line followed by the email body. Include a short "
 CONSTRAINTS
 - Keep the tone direct, plain, and respectful of a busy founder's time.
 - Keep the email body under 120 words.
-- Do not invent customer names, metrics, pricing, or product features.
+- Do not invent customer names, metrics, pricing, or product features, because false claims hurt credibility in cold outreach.
+- Read and draft only. Ask me before sending, publishing, or changing anything.
 ```
 
 **What Changed & Fill In Before Running**
+
 - Removed the empty expert title ("Act as a world-class email copywriter") and the manual "Think step by step" instruction.
 - Added a testable "Done when" line, word limit, and output format.
 - Replaced missing product details with explicit placeholders so the model does not invent claims.
+- Added the default read-and-draft-only autonomy limit so a tool-enabled model asks before sending or changing anything.
 - Fill in before running:
-  - `[PLACEHOLDER: product name and 1-sentence description of what the analytics tool measures or fixes]`
-  - `[PLACEHOLDER: one real metric, customer result, or concrete feature]`
-  - `[PLACEHOLDER: desired next step, such as a 15-minute call or reply with a question]`
+    - `[PLACEHOLDER: product name and 1-sentence description of what the analytics tool measures or fixes]`
+    - `[PLACEHOLDER: one real metric, customer result, or concrete feature]`
+    - `[PLACEHOLDER: desired next step, such as a 15-minute call or reply with a question]`
+
+Note: Written rules in a brief cannot enforce external-action limits by themselves; rely on your tool's own permissions and approval gates to block unapproved actions.
 
 ## License
 
